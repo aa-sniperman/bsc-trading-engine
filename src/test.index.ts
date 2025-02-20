@@ -5,6 +5,7 @@ import { Keys } from "./keys";
 import { FundDistribution } from "./fund-distribution";
 import { Token } from "./token";
 import { PancakeMixTrade } from "./pancake/mix-trade";
+import { FourMemeSwapper } from "./four.meme/swap";
 
 async function main() {
     const pk = env.keys.pk;
@@ -25,10 +26,12 @@ async function main() {
     // );
     // console.log(balances);
 
-    await PancakeMixTrade.mixSwapMultiWallets(
-        sniperKeys.map(k => k.privateKey),
-        3
-    )
+    // await PancakeMixTrade.mixSwapMultiWallets(
+    //     sniperKeys.map(k => k.privateKey),
+    //     3
+    // )
+
+    await FourMemeSwapper.fastBuy(wallet, await wallet.getNonce(), '0xf3f26525741e6e94ea94d0fa0c6bca7d339140b1', parseEther('0.0005'))
 }
 
 main().then();

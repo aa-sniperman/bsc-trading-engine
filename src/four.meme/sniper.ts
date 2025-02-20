@@ -16,7 +16,6 @@ export namespace MemeSniper {
             creator: event.args[0],
             blockNumber: log.blockNumber,
         }
-        console.log(creation);
         return creation
     }
 
