@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@noble/secp256k1": "^2.1.0",
+    "@pancakeswap/v3-sdk": "^3.8.13",
+    "@uniswap/sdk-core": "^7.5.0",
     "axios": "^1.7.7",
     "bignumber.js": "^9.1.2",
     "binance-api-node": "^0.12.7",
