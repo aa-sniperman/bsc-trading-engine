@@ -2,7 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export { ERC20__factory } from "./ERC20__factory";
+export { IWETH__factory } from "./IWETH__factory";
 export { PancackeRouter__factory } from "./PancackeRouter__factory";
+export { PancackeV3Router__factory } from "./PancackeV3Router__factory";
 export { TokenManager__factory } from "./TokenManager__factory";
 export { TokenManager2__factory } from "./TokenManager2__factory";
 export { TokenManagerHelper3__factory } from "./TokenManagerHelper3__factory";

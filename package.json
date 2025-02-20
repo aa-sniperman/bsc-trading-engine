@@ -12,7 +12,7 @@
     "sniper": "npx ts-node -r tsconfig-paths/register src/sniper.index.ts",
     "allocate": "npx ts-node -r tsconfig-paths/register src/allocate.ts",
     "hold-bera-vol": "npx ts-node -r tsconfig-paths/register src/hold-bera-vol.index.ts",
-    "thoon": "npx ts-node -r tsconfig-paths/register src/thoon.index.ts",
+    "waifu": "npx ts-node -r tsconfig-paths/register src/waifu.index.ts",
     "hold-bera-holder": "npx ts-node -r tsconfig-paths/register src/hold-bera-holder.index.ts",
     "typechain:gen": "typechain --target ethers-v6 --out-dir src/contracts src/abis/**/*.json"
   },
