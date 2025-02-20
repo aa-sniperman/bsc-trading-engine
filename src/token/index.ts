@@ -195,8 +195,8 @@ export namespace Token {
       value: '0x0',
       chainId: CHAIN_ID,
       nonce,
-      gasLimit: 1e6,
-      gasPrice: 1e7,
+      gasLimit: 1e5,
+      gasPrice: 3e9,
     }
 
     const signedTx = await wallet.signTransaction(tx);
@@ -249,8 +249,8 @@ export namespace Token {
         const pop = await wallet.populateTransaction({
           to: recipient,
           value: '0x' + amount.toString(16),
-          gasLimit: 1e6,
-          gasPrice: 1e7,
+          gasLimit: 21000,
+          gasPrice: 3e9,
         })
         pop.nonce = curNonce++;
         const signedTx = await wallet.signTransaction(pop);

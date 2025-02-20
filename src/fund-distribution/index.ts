@@ -6,11 +6,11 @@ import { sleep } from "src/utils";
 
 export namespace FundDistribution {
     async function estimateTransferTokenGas(pk: string, token: string) {
-        return parseEther('0.00001')
+        return parseEther('0.0001')
     }
 
     async function estimateTransferETHGas(pk: string) {
-        return parseEther('0.00001')
+        return parseEther('0.0001')
     }
 
     async function groupEndWithMiddle(

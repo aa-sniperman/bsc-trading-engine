@@ -6,7 +6,7 @@ import tokensForTrade from "./tokens-for-mix-trade.json";
 import { env } from "src/configs";
 import { PancakeSwapper } from "./swap";
 
-export namespace HoldsoMixTrade {
+export namespace PancakeMixTrade {
     export async function mixSwapOneWallet(privKey: string, baseTokens: string[], rounds: number) {
         const wallet = new Wallet(privKey, PROVIDER);
         for (let i = 0; i < rounds; i++) {
