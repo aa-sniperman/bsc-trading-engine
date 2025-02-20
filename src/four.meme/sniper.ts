@@ -5,6 +5,7 @@ import { FourMemeTypes } from "./types";
 import { FourMemeSwapper } from "./swap";
 import { PROVIDER, TOKEN_MANAGER_V2 } from "src/constants";
 import { PancakeSniper } from "src/pancake/sniper";
+import { Token } from "src/token";
 
 export namespace MemeSniper {
     export function extractTokenCreation(log: ethers.Log) {
@@ -37,6 +38,42 @@ export namespace MemeSniper {
                     return await wallet.getNonce("pending");
                 })
             )
+        }
+
+        async batchRug(token: string) {
+            await this.precalculateNonces();
+            const amounts = await Token.getRawBalances(this.wallets.map(w => w.address), [token]);
+            await Promise.all(this.wallets.map(async (w, walletIdx) => {
+                await this.rugForWallet(walletIdx, token, amounts[w.address][token])
+            }))
+        }
+
+        private async rugForWallet(walletIdx: number, token: string, amount: bigint) {
+            let attempt = 0;
+            let success = false;
+            const wallet = this.wallets[walletIdx];
+            const nonce = this.nonces[walletIdx];
+
+            do {
+                try {
+                    const hash = await FourMemeSwapper.fastSell(
+                        wallet,
+                        nonce,
+                        token,
+                        amount
+                    )
+                    console.log(hash)
+                    success = true;
+                } catch (err) {
+                    const msg = (err as Error).message;
+                    if (msg.includes('nonce has already been used')) {
+                        success = true;
+                    } else {
+                        console.log(`Failed to sell for wallet ${wallet.address} at attempt ${attempt + 1}`);
+                        console.log(err);
+                    }
+                }
+            } while (attempt < 10 && !success);
         }
 
         private async buyForWallet(walletIdx: number, token: string) {
